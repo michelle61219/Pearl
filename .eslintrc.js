@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  globals: {
+  globals:{
     process: true,
   },
   extends: ["eslint:recommended", "plugin:vue/vue3-essential"],
