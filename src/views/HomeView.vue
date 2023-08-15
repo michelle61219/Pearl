@@ -15,7 +15,7 @@ export default {
     HelloWorld
   },
   created() {
-    console.log(process.env.VUE_APP_API, process.env.VUE_APP_PATH);
+    // console.log(process.env.VUE_APP_API, process.env.VUE_APP_PATH);
   },
 }
 </script>
