@@ -1,5 +1,5 @@
 <template>
-    <Loading :active="isLoading"></Loading>
+    <LoadingOverlay :active="isLoading"></LoadingOverlay>
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -26,3 +26,45 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            product: { }, // 單一選項(detailed product page)
+            id: ' ',
+        };
+    },
+   inject: ['pushMessageState'],
+    methods: {
+        getProduct() {
+            const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`;
+            this.isLoading = true;
+            this.$http.get(api).then((response) => {
+                this.isLoading = false;
+                if(response.data.success){
+                    this.product = response.data.product;
+                }
+            });
+        },
+        addToCart(id, qty =1) {
+            const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+            const cart = {
+                product_id: id,
+                qty,
+            };
+            this.isLoading = true;
+            this.$http.post(url, { data: cart }).then((response) => {
+                this.isLoading = false;
+                // <---Push Toast Messages HERE--->
+                this.pushMessageState(response, '加入購物車');
+                this.$router.push('/user/cart');
+            });
+        },
+    },
+    created() {
+        this.id = this.$route.params.productId;
+        this.getProduct();
+    },
+};
+</script>

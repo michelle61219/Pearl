@@ -3,6 +3,7 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
+import  "bootstrap-icons/font/bootstrap-icons.css";
 
 import App from "./App.vue";
 import router from "./router";
