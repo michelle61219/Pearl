@@ -8,8 +8,9 @@
     <table class="table mt-4">
         <thead>
             <tr>
+                <th width="250">圖片</th>
                 <th width="120">分類</th>
-                <th>產品名稱</th>
+                <th width="150">產品名稱</th>
                 <th width="120">原價</th>
                 <th width="120">售價</th>
                 <th width="100">是否啟用</th>
@@ -18,6 +19,10 @@
         </thead>
         <tbody>
             <tr v-for="item in products" :key="item.id">
+                <td style="width: 200px">
+                    <div style=" height: 180px; background-size: cover;background-position: center;"
+                        :style="{ backgroundImage: `url(${item.imageUrl})` }"></div>
+                </td>
                 <td>{{ item.category }}</td>
                 <td>{{ item.title }}</td>
                 <td class="text-right">
@@ -121,7 +126,6 @@ export default {
             });
         },
         openDelProductModal(item) {
-            console.log(item);
             this.tempProduct = { ...item };
             const delComponent = this.$refs.delModal;
             delComponent.showModal();
@@ -130,8 +134,8 @@ export default {
             const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`;
             this.isLoading = true;
             this.$http.delete(url).then((response) => {
-                console.log(response.data);
-                this.isLoading = false;
+                console.log(response.data)
+                this.pushMessageState(response, "刪除產品");
                 const delComponent = this.$refs.delModal;
                 delComponent.hideModal();
                 this.getProducts();

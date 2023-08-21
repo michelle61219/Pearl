@@ -68,11 +68,11 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="origin_price" class="form-label">原價</label>
                                     <input type="number" class="form-control" id="origin_price"
-                                        v-model="tempProduct.origin_price" placeholder="請輸入原價">
+                                        v-model="tempProduct.origin_price" min="1" placeholder="請輸入原價">
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="price" class="form-label">售價</label>
-                                    <input type="number" class="form-control" id="price" v-model="tempProduct.price"
+                                    <input type="number" class="form-control" id="price" v-model="tempProduct.price" min="1"
                                         placeholder="請輸入售價">
                                 </div>
                             </div>
@@ -131,6 +131,10 @@ export default {
         product() {
             // 監聽空物件裝傳進來的資料
             this.tempProduct = this.product;
+            // 多圖範例
+            if (!this.tempProduct.images) {
+                this.tempProduct.images = [];
+            }
         },
     },
     data() {
