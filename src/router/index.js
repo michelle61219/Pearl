@@ -33,6 +33,11 @@ const routes = [
         name: "coupons",
         component: () => import("../views/CouponsView.vue"),
       },
+      {
+        path: "posts",
+        name: "posts",
+        component: () => import("../views/PostsView.vue"),
+      },
     ],
   },
   {
@@ -50,6 +55,11 @@ const routes = [
         path: "product/:productId",
         name: "productId",
         component: () => import("../views/UserProduct.vue"),
+      },
+      {
+        path: "checkout/:orderId",
+        name: "checkout",
+        component: () => import("../views/UserCheckout.vue"),
       },
     ],
   },
