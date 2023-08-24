@@ -176,7 +176,7 @@ export default {
                 message: ' ',
             },
             cart: {},
-            coupon_code: " ",
+            coupon_code: "",
         };
     },
     inject: ["pushMessageState"],
