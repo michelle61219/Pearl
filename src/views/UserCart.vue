@@ -14,7 +14,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="item in products" :key="item.id">
+                        <tr v-for="item in products" :key="item.id" v-show="item.is_enabled">
                             <td style="width: 200px">
                                 <div style=" height: 180px; background-size: cover;background-position: center;"
                                     :style="{ backgroundImage: `url(${item.imageUrl})` }"></div>
@@ -30,7 +30,6 @@
                                 <div class="h5" v-else>{{ item.origin_price }}元</div>
                             </td>
                             <td>
-
                                 <div class="btn-group btn-group-sm">
                                     <button type="button" class="btn btn-outline-secondary" @click="getProduct(item.id)">
                                         查看更多
@@ -168,12 +167,12 @@ export default {
             },
             form: {
                 user: {
-                    name: ' ',
-                    email: ' ',
-                    tel: ' ',
-                    address: ' ',
+                    name: '',
+                    email: '',
+                    tel: '',
+                    address: '',
                 },
-                message: ' ',
+                message: '',
             },
             cart: {},
             coupon_code: "",
