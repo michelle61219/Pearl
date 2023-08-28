@@ -1,3 +1,4 @@
+// 讓Toast Messages在不同的Components裡面被傳遞
 import emitter from "@/methods/emitter";
 
 export default function (response, title = "更新") {
