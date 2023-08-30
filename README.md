@@ -1,4 +1,4 @@
-# vue-dashboard-record
+# Pearl
 
 ## Project setup
 ```
